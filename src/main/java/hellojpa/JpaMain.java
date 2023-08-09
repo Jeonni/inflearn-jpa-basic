@@ -153,6 +153,35 @@ public class JpaMain {
 //
 //            System.out.println(" ==================== ");
 
+//            Member member  = new Member(1L, "jeon", 24);
+//            em.persist(member);
+
+            Member member = new Member();
+            member.setName("A");
+
+            Member member1 = new Member();
+            member1.setName("B");
+
+            Member member2 = new Member();
+            member2.setName("C");
+
+            System.out.println("==================");
+
+            //DB SEQ = 1
+            //DB SEQ = 51
+
+            em.persist(member); // 1, 51
+            em.persist(member1); // MEM
+            em.persist(member2); // MEM
+
+            System.out.println("member = " + member.getName());
+            System.out.println("member1 = " + member1.getName());
+            System.out.println("member2 = " + member2.getName());
+
+            System.out.println("==================");
+
+            em.persist(member);
+
             tx.commit(); // [트랜잭션] - 커밋
         } catch (Exception e) {
             tx.rollback(); // [트랜잭션] - 롤백
